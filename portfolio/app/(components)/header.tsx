@@ -1,11 +1,15 @@
-import Link from "next/link"
-import { headers } from "next/headers";
+'use client'
+
+import Link from "next/link";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+
 const navigation = [
-    { name: "HOME", href: "/" },
-    { name: "ABOUT", href: "/about" },
-    { name: "SKILLS", href: "/skills" },
-    { name: "PROJECTS", href: "/projects" },
-    { name: "CONTACT", href: "/contact" }
+    { number: "01.", name: "Home", href: "/" },
+    { number: "02.", name: "About", href: "/about" },
+    { number: "03.", name: "Skills", href: "/skills" },
+    { number: "04.", name: "Projects", href: "/projects" },
+    { number: "05.", name: "Contact", href: "/contact" }
 ]
 
 function classNames(...classes: string[]) {
@@ -13,26 +17,29 @@ function classNames(...classes: string[]) {
 }
 
 export default function Header() {
-
-    const headersList = headers();
-    const activePath = headersList.get("x-invoke-path");
+    const pathName = usePathname();
 
     return (
         <div className="fixed w-full top-0">
             <div className="flex justify-between items-center mx-10 pt-4">
-                <span className="text">Simone Zamparini</span>
+                <span className="p-2 text-sky-300 text-sm border border-sky-300">SZ</span>
                 <ul>
                     <div className="flex items-center space-x-10">
                         {navigation.map(item => (
-                            <li key={item.name}
-                                className={
-                                    classNames(
-                                        activePath == item.href ? 'border-b-2 border-gray-900 text-gray-900 font-semibold'
-                                            : 'hover:font-medium',
-                                        'pb-2 text-sm')}
-                            >
-                                <Link href={item.href}>
+                            <li key={item.name} className="pb-4">
+                                <Link href={item.href} >
+                                    <span className='text-[11px] text-sky-300 mr-1'>
+                                        {item.number}
+                                    </span>
+                                    <span className={
+                                        classNames(
+                                            pathName == item.href ? 'font-semibold'
+                                                : '',
+                                            'text-gray-300 text-sm')}
+                                    >
                                     {item.name}
+
+                                    </span>
                                 </Link>
                             </li>
                         ))}
