@@ -20,8 +20,8 @@ export default function Header() {
     const pathName = usePathname();
 
     return (
-        <div className="fixed w-full top-0">
-            <div className="flex justify-between items-center mx-10 pt-4">
+        <div className="sticky w-full top-0">
+            <div className="flex justify-between items-center pt-4">
                 <span className="p-2 text-sky-300 text-sm border border-sky-300">SZ</span>
                 <ul>
                     <div className="flex items-center space-x-10">
@@ -37,8 +37,7 @@ export default function Header() {
                                                 : '',
                                             'text-gray-300 text-sm')}
                                     >
-                                    {item.name}
-
+                                        {item.name}
                                     </span>
                                 </Link>
                             </li>
