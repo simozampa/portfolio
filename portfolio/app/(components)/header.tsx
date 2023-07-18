@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
     { number: "01.", name: "Home", href: "/" },
-    { number: "02.", name: "About", href: "/about" },
+    { number: "02.", name: "About", href: "/#about" },
     { number: "03.", name: "Skills", href: "/skills" },
     { number: "04.", name: "Projects", href: "/projects" },
     { number: "05.", name: "Contact", href: "/contact" }
@@ -20,9 +20,9 @@ export default function Header() {
     const pathName = usePathname();
 
     return (
-        <div className="sticky w-full top-0">
+        <div className="sticky w-full top-0 px-32">
             <div className="flex justify-between items-center pt-4">
-                <span className="p-2 text-sky-300 text-sm border border-sky-300">SZ</span>
+                <span className="p-1 text-sky-300 text-xs border border-sky-300">SZ</span>
                 <ul>
                     <div className="flex items-center space-x-10">
                         {navigation.map(item => (
